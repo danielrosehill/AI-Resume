@@ -1,0 +1,873 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/danielrosehill/AI-Resume/main/schema/agent-resume-schema.json",
+  "title": "Agent Resume Standard",
+  "description": "A machine-readable resume format designed for AI agents. This schema defines a structured representation of a professional profile that can be parsed, matched, and acted upon by autonomous agents, recruitment systems, and workflow automation tools.",
+  "type": "object",
+  "required": [
+    "meta",
+    "person",
+    "location",
+    "summary",
+    "availability",
+    "skills",
+    "experience",
+    "education"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Optional self-reference to the JSON Schema this document conforms to.",
+      "format": "uri-reference"
+    },
+    "meta": {
+      "type": "object",
+      "description": "Metadata about this resume document, including format version, update timestamps, and links to alternate representations.",
+      "required": ["format", "version", "lastUpdated"],
+      "additionalProperties": false,
+      "properties": {
+        "format": {
+          "type": "string",
+          "description": "The name of the resume format standard this document conforms to."
+        },
+        "version": {
+          "type": "string",
+          "description": "The semantic version of the resume format standard.",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "description": "The date this resume was last updated, in ISO 8601 date format.",
+          "format": "date"
+        },
+        "canonical": {
+          "type": "string",
+          "description": "The canonical URI where the authoritative version of this resume can be found.",
+          "format": "uri"
+        },
+        "alternateFormats": {
+          "type": "object",
+          "description": "A map of format labels to URIs where alternate representations of this resume are available (e.g., PDF, Markdown, HTML).",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "person": {
+      "type": "object",
+      "description": "Core identity and contact information for the resume subject.",
+      "required": ["fullName", "headline", "email"],
+      "additionalProperties": false,
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "description": "The person's full legal or professional name."
+        },
+        "headline": {
+          "type": "string",
+          "description": "A brief professional headline or tagline summarizing the person's role or expertise."
+        },
+        "website": {
+          "type": "string",
+          "description": "The person's personal or professional website.",
+          "format": "uri"
+        },
+        "email": {
+          "type": "string",
+          "description": "The person's primary contact email address.",
+          "format": "email"
+        },
+        "linkedin": {
+          "type": "string",
+          "description": "URL to the person's LinkedIn profile.",
+          "format": "uri"
+        },
+        "github": {
+          "type": "string",
+          "description": "URL to the person's GitHub profile.",
+          "format": "uri"
+        },
+        "huggingface": {
+          "type": "string",
+          "description": "URL to the person's Hugging Face profile.",
+          "format": "uri"
+        },
+        "business": {
+          "type": "object",
+          "description": "Details about the person's business entity, if applicable.",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The registered or trading name of the business."
+            },
+            "url": {
+              "type": "string",
+              "description": "The business website URL.",
+              "format": "uri"
+            }
+          }
+        }
+      }
+    },
+    "location": {
+      "type": "object",
+      "description": "The person's primary geographic location, timezone information, and remote work openness.",
+      "required": ["city", "country", "countryCode"],
+      "additionalProperties": false,
+      "properties": {
+        "city": {
+          "type": "string",
+          "description": "The city where the person is based."
+        },
+        "country": {
+          "type": "string",
+          "description": "The country where the person is based."
+        },
+        "countryCode": {
+          "type": "string",
+          "description": "The ISO 3166-1 alpha-2 country code.",
+          "pattern": "^[A-Z]{2}$"
+        },
+        "timezone": {
+          "type": "object",
+          "description": "Detailed timezone information for the person's location.",
+          "additionalProperties": false,
+          "properties": {
+            "iana": {
+              "type": "string",
+              "description": "The IANA timezone identifier (e.g., 'Asia/Jerusalem', 'America/New_York')."
+            },
+            "standard": {
+              "type": "object",
+              "description": "Standard (non-daylight-saving) timezone details.",
+              "additionalProperties": false,
+              "properties": {
+                "abbreviation": {
+                  "type": "string",
+                  "description": "The standard timezone abbreviation (e.g., 'IST', 'EST')."
+                },
+                "utcOffset": {
+                  "type": "string",
+                  "description": "The UTC offset during standard time (e.g., '+02:00', '-05:00')."
+                }
+              }
+            },
+            "daylight": {
+              "type": "object",
+              "description": "Daylight saving timezone details, if applicable.",
+              "additionalProperties": false,
+              "properties": {
+                "abbreviation": {
+                  "type": "string",
+                  "description": "The daylight saving timezone abbreviation (e.g., 'IDT', 'EDT')."
+                },
+                "utcOffset": {
+                  "type": "string",
+                  "description": "The UTC offset during daylight saving time (e.g., '+03:00', '-04:00')."
+                },
+                "start": {
+                  "type": "string",
+                  "description": "Approximate start of daylight saving time (e.g., 'Late March')."
+                },
+                "end": {
+                  "type": "string",
+                  "description": "Approximate end of daylight saving time (e.g., 'Late October')."
+                }
+              }
+            }
+          },
+          "required": ["iana"]
+        },
+        "openToRemote": {
+          "type": "boolean",
+          "description": "Whether the person is open to fully remote work opportunities."
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "description": "A free-text professional summary describing the person's background, expertise, and career focus. This serves as the primary narrative introduction for both human readers and AI agents."
+    },
+    "availability": {
+      "type": "object",
+      "description": "Current job search status and preferred contact methods.",
+      "required": ["status", "types"],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "The person's current job search status.",
+          "enum": [
+            "actively_searching",
+            "open_to_opportunities",
+            "not_looking",
+            "employed_open"
+          ]
+        },
+        "types": {
+          "type": "array",
+          "description": "The types of work arrangements the person is open to (e.g., 'Full-time', 'Contract', 'Consulting').",
+          "items": {
+            "type": "string"
+          }
+        },
+        "contactMethod": {
+          "type": "string",
+          "description": "The preferred method for initial contact.",
+          "enum": ["email", "linkedin", "phone", "website", "calendar"]
+        },
+        "contactUrl": {
+          "type": "string",
+          "description": "A URL for the preferred contact method (e.g., a calendar booking link or contact form).",
+          "format": "uri"
+        }
+      }
+    },
+    "compensation": {
+      "type": "object",
+      "description": "Compensation expectations including hourly rates, annual salary ranges, and project minimums.",
+      "additionalProperties": false,
+      "properties": {
+        "hourlyRate": {
+          "type": "object",
+          "description": "Expected hourly rate range for contract or consulting work.",
+          "additionalProperties": false,
+          "properties": {
+            "min": {
+              "type": "number",
+              "description": "Minimum acceptable hourly rate."
+            },
+            "max": {
+              "type": "number",
+              "description": "Maximum expected hourly rate."
+            },
+            "currency": {
+              "type": "string",
+              "description": "ISO 4217 three-letter currency code.",
+              "pattern": "^[A-Z]{3}$"
+            },
+            "preferred": {
+              "type": "number",
+              "description": "The preferred or target hourly rate."
+            }
+          }
+        },
+        "annualSalary": {
+          "type": "object",
+          "description": "Expected annual salary range for full-time employment.",
+          "additionalProperties": false,
+          "properties": {
+            "min": {
+              "type": "number",
+              "description": "Minimum acceptable annual salary."
+            },
+            "max": {
+              "type": "number",
+              "description": "Maximum expected annual salary."
+            },
+            "currency": {
+              "type": "string",
+              "description": "ISO 4217 three-letter currency code.",
+              "pattern": "^[A-Z]{3}$"
+            }
+          }
+        },
+        "projectMinimum": {
+          "type": "object",
+          "description": "The minimum project budget the person will consider for project-based engagements.",
+          "additionalProperties": false,
+          "properties": {
+            "amount": {
+              "type": "number",
+              "description": "The minimum project amount."
+            },
+            "currency": {
+              "type": "string",
+              "description": "ISO 4217 three-letter currency code.",
+              "pattern": "^[A-Z]{3}$"
+            }
+          }
+        },
+        "negotiable": {
+          "type": "boolean",
+          "description": "Whether the stated compensation figures are negotiable."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Additional context or notes about compensation expectations."
+        }
+      }
+    },
+    "experienceSummary": {
+      "type": "object",
+      "description": "A high-level summary of professional experience, including total years, domain breakdown, and seniority level.",
+      "required": ["totalYears", "careerStartYear"],
+      "additionalProperties": false,
+      "properties": {
+        "totalYears": {
+          "type": "number",
+          "description": "Total years of professional experience."
+        },
+        "careerStartYear": {
+          "type": "integer",
+          "description": "The calendar year when the person's professional career began."
+        },
+        "domainExperience": {
+          "type": "array",
+          "description": "A breakdown of experience by professional domain or industry.",
+          "items": {
+            "type": "object",
+            "required": ["domain", "years", "level"],
+            "additionalProperties": false,
+            "properties": {
+              "domain": {
+                "type": "string",
+                "description": "The name of the professional domain or industry."
+              },
+              "years": {
+                "type": "number",
+                "description": "Years of experience in this domain."
+              },
+              "level": {
+                "type": "string",
+                "description": "Self-assessed proficiency level in this domain.",
+                "enum": ["beginner", "intermediate", "advanced", "expert"]
+              }
+            }
+          }
+        },
+        "seniorityLevel": {
+          "type": "string",
+          "description": "The person's overall seniority level in their career.",
+          "enum": ["junior", "mid", "senior", "lead", "principal", "executive"]
+        }
+      }
+    },
+    "workPreferences": {
+      "type": "object",
+      "description": "Preferences around work style, communication, meetings, and scheduling.",
+      "additionalProperties": false,
+      "properties": {
+        "remotePreference": {
+          "type": "string",
+          "description": "The person's preference for remote versus onsite work.",
+          "enum": ["remote_only", "remote_preferred", "hybrid", "onsite"]
+        },
+        "asyncPreference": {
+          "type": "string",
+          "description": "The person's preference for asynchronous versus synchronous communication.",
+          "enum": ["async_preferred", "sync_preferred", "flexible"]
+        },
+        "communicationTools": {
+          "type": "array",
+          "description": "Communication and collaboration tools the person is comfortable with or prefers (e.g., 'Slack', 'Zoom', 'Microsoft Teams').",
+          "items": {
+            "type": "string"
+          }
+        },
+        "meetingTolerance": {
+          "type": "string",
+          "description": "How many meetings the person is comfortable with in a typical work week.",
+          "enum": ["minimal", "moderate", "flexible"]
+        },
+        "typicalWorkingHours": {
+          "type": "object",
+          "description": "The person's typical daily working hours.",
+          "additionalProperties": false,
+          "properties": {
+            "start": {
+              "type": "string",
+              "description": "Start of the typical working day in HH:MM 24-hour format.",
+              "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$"
+            },
+            "end": {
+              "type": "string",
+              "description": "End of the typical working day in HH:MM 24-hour format.",
+              "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$"
+            },
+            "timezone": {
+              "type": "string",
+              "description": "The IANA timezone identifier for the working hours."
+            }
+          }
+        },
+        "timezoneOverlapMinHours": {
+          "type": "number",
+          "description": "The minimum number of overlapping working hours required with a team or client timezone.",
+          "minimum": 0,
+          "maximum": 24
+        }
+      }
+    },
+    "engagementPreferences": {
+      "type": "object",
+      "description": "Preferences about the types of engagements, industries, project duration, and team dynamics the person seeks or avoids.",
+      "additionalProperties": false,
+      "properties": {
+        "preferredTypes": {
+          "type": "array",
+          "description": "The types of professional engagements the person prefers.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "full_time",
+              "part_time",
+              "consulting",
+              "contract",
+              "fractional",
+              "project_based",
+              "retainer",
+              "advisory"
+            ]
+          }
+        },
+        "preferredIndustries": {
+          "type": "array",
+          "description": "Industries or sectors the person is particularly interested in working within.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "avoidIndustries": {
+          "type": "array",
+          "description": "Industries or sectors the person prefers to avoid.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "idealProjectDuration": {
+          "type": "object",
+          "description": "The ideal duration range for project-based engagements.",
+          "additionalProperties": false,
+          "properties": {
+            "min": {
+              "type": "number",
+              "description": "Minimum ideal project duration."
+            },
+            "max": {
+              "type": "number",
+              "description": "Maximum ideal project duration."
+            },
+            "unit": {
+              "type": "string",
+              "description": "The unit of time for the duration values.",
+              "enum": ["days", "weeks", "months", "years"]
+            }
+          }
+        },
+        "noticePeriod": {
+          "type": "string",
+          "description": "The notice period required before starting a new engagement (e.g., '2 weeks', '1 month', 'Immediate')."
+        },
+        "teamSizePreference": {
+          "type": "string",
+          "description": "The person's preference for the size of the team they work within.",
+          "enum": ["solo", "small", "medium", "large", "any"]
+        },
+        "dealBreakers": {
+          "type": "array",
+          "description": "Conditions or requirements that would cause the person to decline an engagement.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "portfolio": {
+      "type": "object",
+      "description": "Links to the person's publicly visible work, including code repositories, publications, and speaking engagements.",
+      "additionalProperties": false,
+      "properties": {
+        "github": {
+          "type": "object",
+          "description": "GitHub profile and contribution summary.",
+          "additionalProperties": false,
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "URL to the person's GitHub profile.",
+              "format": "uri"
+            },
+            "publicRepos": {
+              "type": "integer",
+              "description": "Approximate number of public repositories."
+            },
+            "contributions": {
+              "type": "string",
+              "description": "A summary description of the person's GitHub contributions."
+            }
+          }
+        },
+        "huggingFace": {
+          "type": "object",
+          "description": "Hugging Face profile and contribution summary.",
+          "additionalProperties": false,
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "URL to the person's Hugging Face profile.",
+              "format": "uri"
+            },
+            "datasets": {
+              "type": "integer",
+              "description": "Approximate number of published datasets."
+            },
+            "spaces": {
+              "type": "integer",
+              "description": "Approximate number of published Spaces."
+            },
+            "models": {
+              "type": "integer",
+              "description": "Approximate number of published models."
+            }
+          }
+        },
+        "npm": {
+          "type": "object",
+          "description": "npm profile and package count.",
+          "additionalProperties": false,
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "URL to the person's npm profile.",
+              "format": "uri"
+            },
+            "packages": {
+              "type": "integer",
+              "description": "Approximate number of published npm packages."
+            }
+          }
+        },
+        "publications": {
+          "type": "array",
+          "description": "Published works including blog posts, papers, books, and open source projects.",
+          "items": {
+            "type": "object",
+            "required": ["title", "url"],
+            "additionalProperties": false,
+            "properties": {
+              "title": {
+                "type": "string",
+                "description": "The title of the publication."
+              },
+              "url": {
+                "type": "string",
+                "description": "URL where the publication can be accessed.",
+                "format": "uri"
+              },
+              "type": {
+                "type": "string",
+                "description": "The type or category of the publication.",
+                "enum": [
+                  "blog",
+                  "whitepaper",
+                  "open_source",
+                  "academic",
+                  "book",
+                  "article"
+                ]
+              }
+            }
+          }
+        },
+        "speakingEngagements": {
+          "type": "array",
+          "description": "Conferences, meetups, or events where the person has presented.",
+          "items": {
+            "type": "object",
+            "required": ["event", "topic"],
+            "additionalProperties": false,
+            "properties": {
+              "event": {
+                "type": "string",
+                "description": "The name of the event or conference."
+              },
+              "topic": {
+                "type": "string",
+                "description": "The topic or title of the presentation."
+              }
+            }
+          }
+        }
+      }
+    },
+    "languages": {
+      "type": "array",
+      "description": "Spoken and written languages with proficiency levels, following the ILR scale.",
+      "items": {
+        "type": "object",
+        "required": ["language", "proficiency", "iso639"],
+        "additionalProperties": false,
+        "properties": {
+          "language": {
+            "type": "string",
+            "description": "The name of the language."
+          },
+          "proficiency": {
+            "type": "string",
+            "description": "Proficiency level using the Interagency Language Roundtable (ILR) scale.",
+            "enum": [
+              "elementary",
+              "limited_working",
+              "professional_working",
+              "full_professional",
+              "native"
+            ]
+          },
+          "iso639": {
+            "type": "string",
+            "description": "The ISO 639 language code (2 or 3 characters).",
+            "pattern": "^[a-z]{2,3}$"
+          }
+        }
+      }
+    },
+    "matchCriteria": {
+      "type": "object",
+      "description": "Structured signals for AI agents and matching algorithms to determine fit for opportunities.",
+      "additionalProperties": false,
+      "properties": {
+        "lookingFor": {
+          "type": "array",
+          "description": "Descriptions of the types of roles, projects, or opportunities the person is seeking.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notLookingFor": {
+          "type": "array",
+          "description": "Descriptions of roles, projects, or opportunities the person explicitly does not want.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "idealEngagement": {
+          "type": "string",
+          "description": "A free-text description of the person's ideal work engagement."
+        },
+        "keywords": {
+          "type": "array",
+          "description": "Keywords and tags that AI agents and search systems can use for matching and indexing.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "communication": {
+      "type": "object",
+      "description": "Communication preferences and availability for initial outreach and ongoing contact.",
+      "additionalProperties": false,
+      "properties": {
+        "preferredMethod": {
+          "type": "string",
+          "description": "The person's preferred method of communication.",
+          "enum": ["email", "slack", "linkedin", "phone", "calendar"]
+        },
+        "responseTimeSLA": {
+          "type": "string",
+          "description": "Expected response time for initial contact (e.g., '24-48 hours', 'Same business day')."
+        },
+        "bestTimeToReach": {
+          "type": "object",
+          "description": "The best window of time to reach the person.",
+          "additionalProperties": false,
+          "properties": {
+            "start": {
+              "type": "string",
+              "description": "Start of the best contact window in HH:MM 24-hour format.",
+              "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$"
+            },
+            "end": {
+              "type": "string",
+              "description": "End of the best contact window in HH:MM 24-hour format.",
+              "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$"
+            },
+            "timezone": {
+              "type": "string",
+              "description": "The IANA timezone identifier for the contact window."
+            }
+          }
+        },
+        "calendarBookingUrl": {
+          "description": "A URL for booking a meeting on the person's calendar, or null if not available.",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "uri"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "values": {
+      "type": "array",
+      "description": "Core professional values, principles, or causes the person cares about (e.g., 'open source', 'accessibility', 'sustainability').",
+      "items": {
+        "type": "string"
+      }
+    },
+    "skills": {
+      "type": "object",
+      "description": "The person's professional skills organized into primary skills, secondary skills, and categorized tooling.",
+      "required": ["primary"],
+      "additionalProperties": false,
+      "properties": {
+        "primary": {
+          "type": "array",
+          "description": "The person's core professional skills — the areas where they have the deepest expertise and most significant experience.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "secondary": {
+          "type": "array",
+          "description": "Supporting or complementary skills that the person has working knowledge of.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tools": {
+          "type": "object",
+          "description": "A categorized map of tools and technologies the person uses. Keys are category names (e.g., 'AI/ML', 'DevOps', 'Design') and values are arrays of tool names.",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "experience": {
+      "type": "array",
+      "description": "A chronological list of professional positions and engagements.",
+      "items": {
+        "type": "object",
+        "required": ["role", "organization", "startDate", "summary"],
+        "additionalProperties": false,
+        "properties": {
+          "role": {
+            "type": "string",
+            "description": "The job title or role held."
+          },
+          "organization": {
+            "type": "string",
+            "description": "The name of the company, organization, or client."
+          },
+          "url": {
+            "type": "string",
+            "description": "URL to the organization's website.",
+            "format": "uri"
+          },
+          "startDate": {
+            "type": "string",
+            "description": "The start date of the position in ISO 8601 date format (YYYY-MM-DD).",
+            "format": "date"
+          },
+          "endDate": {
+            "description": "The end date of the position in ISO 8601 date format (YYYY-MM-DD), or null if the position is current.",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "current": {
+            "type": "boolean",
+            "description": "Whether this is the person's current position."
+          },
+          "location": {
+            "type": "string",
+            "description": "The location of the position (e.g., 'Remote', 'New York, NY')."
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of employment arrangement.",
+            "enum": [
+              "full_time",
+              "part_time",
+              "contract",
+              "self_employed",
+              "freelance",
+              "internship",
+              "full_time_then_contract"
+            ]
+          },
+          "summary": {
+            "type": "string",
+            "description": "A description of the role, responsibilities, and accomplishments."
+          },
+          "tags": {
+            "type": "array",
+            "description": "Tags or keywords associated with this position for search and matching.",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "education": {
+      "type": "array",
+      "description": "Academic qualifications and educational background.",
+      "items": {
+        "type": "object",
+        "required": ["degree", "field", "institution"],
+        "additionalProperties": false,
+        "properties": {
+          "degree": {
+            "type": "string",
+            "description": "The degree or qualification obtained (e.g., 'Bachelor of Arts', 'Master of Science')."
+          },
+          "field": {
+            "type": "string",
+            "description": "The field of study or major."
+          },
+          "institution": {
+            "type": "string",
+            "description": "The name of the educational institution."
+          },
+          "location": {
+            "type": "string",
+            "description": "The location of the educational institution."
+          }
+        }
+      }
+    },
+    "agentInstructions": {
+      "type": "object",
+      "description": "Instructions and metadata specifically for AI agents consuming this resume. Provides guidance on how to interpret, use, and maintain this document.",
+      "additionalProperties": false,
+      "properties": {
+        "purpose": {
+          "type": "string",
+          "description": "A statement describing the intended purpose of this resume document for AI agents."
+        },
+        "confidenceNotes": {
+          "type": "string",
+          "description": "Notes about the confidence level or accuracy of the information in this resume."
+        },
+        "updateFrequency": {
+          "type": "string",
+          "description": "How frequently this resume is expected to be updated.",
+          "enum": ["weekly", "monthly", "quarterly", "annually"]
+        },
+        "humanVerification": {
+          "type": "string",
+          "description": "A note about whether and how the information in this resume has been verified by a human."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "$schema": "./schema/agent-resume-schema.json",
+  "meta": {
+    "format": "agent-resume",
+    "version": "1.0.0",
+    "lastUpdated": "2026-02-17",
+    "canonical": "https://danielrosehill.com/about/cv",
+    "alternateFormats": {
+      "html": "https://danielrosehill.com/about/cv",
+      "pdf": "https://danielrosehill.com/files/docs/pdf/daniel-resume-public.pdf",
+      "json": "https://danielrosehill.com/files/docs/resume.json",
+      "markdown": "https://danielrosehill.com/files/docs/resume.md"
+    }
+  },
+  "person": {
+    "fullName": "Daniel Rosehill",
+    "headline": "AI Developer & Technical Communications Professional",
+    "website": "https://danielrosehill.com",
+    "email": "public@danielrosehill.com",
+    "linkedin": "https://www.linkedin.com/in/danielrosehill/",
+    "github": "https://github.com/danielrosehill",
+    "huggingface": "https://huggingface.co/danielrosehill",
+    "business": {
+      "name": "DSR Holdings",
+      "url": "https://dsrholdings.cloud"
+    }
+  },
+  "location": {
+    "city": "Jerusalem",
+    "country": "Israel",
+    "countryCode": "IL",
+    "timezone": {
+      "iana": "Asia/Jerusalem",
+      "standard": {
+        "abbreviation": "IST",
+        "utcOffset": "+02:00"
+      },
+      "daylight": {
+        "abbreviation": "IDT",
+        "utcOffset": "+03:00",
+        "start": "2026-03-27",
+        "end": "2026-10-25"
+      }
+    },
+    "openToRemote": true
+  },
+  "summary": "AI developer and technical communications professional with over a decade of experience bridging AI systems, workflow orchestration, and strategic business communications. Specific interests include agentic AI, workflows, MCP, STT and ASR, and multimodal AI. Expert in developing and implementing multi-agent systems, workflow automation solutions, and RAG architectures for complex technical environments.",
+  "availability": {
+    "status": "open_to_opportunities",
+    "types": ["consulting", "contract", "technical_documentation", "workflow_automation"],
+    "contactMethod": "email",
+    "contactUrl": "https://danielrosehill.com/contact"
+  },
+  "compensation": {
+    "hourlyRate": {
+      "min": 100,
+      "max": 175,
+      "currency": "USD",
+      "preferred": 150
+    },
+    "annualSalary": {
+      "min": 120000,
+      "max": 180000,
+      "currency": "USD"
+    },
+    "projectMinimum": {
+      "amount": 5000,
+      "currency": "USD"
+    },
+    "negotiable": true,
+    "notes": "Rates vary based on project scope, duration, and complexity. Long-term engagements and retainer arrangements are preferred and may be discounted."
+  },
+  "experienceSummary": {
+    "totalYears": 13,
+    "careerStartYear": 2013,
+    "domainExperience": [
+      { "domain": "Technical Communications", "years": 13, "level": "expert" },
+      { "domain": "AI & Machine Learning", "years": 5, "level": "advanced" },
+      { "domain": "Workflow Automation", "years": 6, "level": "expert" },
+      { "domain": "Agent Orchestration", "years": 3, "level": "advanced" },
+      { "domain": "Marketing Communications", "years": 10, "level": "expert" },
+      { "domain": "Content Strategy", "years": 10, "level": "expert" },
+      { "domain": "DevOps & Cloud", "years": 4, "level": "intermediate" }
+    ],
+    "seniorityLevel": "senior"
+  },
+  "workPreferences": {
+    "remotePreference": "remote_only",
+    "asyncPreference": "async_preferred",
+    "communicationTools": ["Email", "Slack", "Google Meet", "Zoom", "Notion", "GitHub"],
+    "meetingTolerance": "minimal",
+    "typicalWorkingHours": {
+      "start": "09:00",
+      "end": "18:00",
+      "timezone": "Asia/Jerusalem"
+    },
+    "timezoneOverlapMinHours": 3
+  },
+  "engagementPreferences": {
+    "preferredTypes": ["consulting", "contract", "fractional", "project_based", "retainer"],
+    "preferredIndustries": ["AI/ML", "Developer Tools", "Open Source", "Impact Investing", "Climate Tech", "SaaS"],
+    "avoidIndustries": ["Gambling", "Tobacco"],
+    "idealProjectDuration": {
+      "min": 1,
+      "max": 12,
+      "unit": "months"
+    },
+    "noticePeriod": "2 weeks",
+    "teamSizePreference": "small",
+    "dealBreakers": ["Onsite-only requirement", "No async communication", "Micromanagement culture"]
+  },
+  "portfolio": {
+    "github": {
+      "url": "https://github.com/danielrosehill",
+      "publicRepos": 400,
+      "contributions": "Active daily contributor across AI tooling, automation, and documentation projects"
+    },
+    "huggingFace": {
+      "url": "https://huggingface.co/danielrosehill",
+      "datasets": 50,
+      "spaces": 10,
+      "models": 2
+    },
+    "npm": {
+      "url": "https://www.npmjs.com/~danielrosehill",
+      "packages": 5
+    },
+    "publications": [
+      {
+        "title": "Awesome LLM Second Brains",
+        "url": "https://github.com/danielrosehill/awesome-llm-second-brains",
+        "type": "open_source"
+      },
+      {
+        "title": "LLM Workspace Scaffolder",
+        "url": "https://github.com/danielrosehill/llm-workspace-scaffolder",
+        "type": "open_source"
+      },
+      {
+        "title": "Prompt Library",
+        "url": "https://github.com/danielrosehill/My-LLM-Assistants",
+        "type": "open_source"
+      }
+    ],
+    "speakingEngagements": []
+  },
+  "languages": [
+    { "language": "English", "proficiency": "native", "iso639": "en" },
+    { "language": "Hebrew", "proficiency": "professional_working", "iso639": "he" }
+  ],
+  "matchCriteria": {
+    "lookingFor": [
+      "AI agent development and orchestration projects",
+      "Technical documentation for AI/ML products",
+      "Workflow automation consulting",
+      "MCP server development and integration",
+      "RAG system architecture and implementation",
+      "Prompt engineering and LLM optimization",
+      "Open source project contributions and maintenance"
+    ],
+    "notLookingFor": [
+      "Pure frontend web development",
+      "Traditional marketing roles without technical component",
+      "Onsite-only positions",
+      "Entry-level positions",
+      "Short-term gigs under $5,000"
+    ],
+    "idealEngagement": "A remote consulting or fractional role focused on AI agent orchestration, workflow automation, or technical communications for an AI-forward company. Async-first culture with a small, skilled team building developer tools or open source infrastructure.",
+    "keywords": [
+      "AI agents", "LLM", "MCP", "Model Context Protocol", "prompt engineering",
+      "RAG", "workflow automation", "n8n", "technical writing", "documentation",
+      "agentic AI", "multi-agent systems", "Claude", "OpenAI", "Hugging Face",
+      "DevOps", "Docker", "Python", "Linux", "open source",
+      "speech-to-text", "ASR", "multimodal AI", "generative AI"
+    ]
+  },
+  "communication": {
+    "preferredMethod": "email",
+    "responseTimeSLA": "24-48 hours",
+    "bestTimeToReach": {
+      "start": "09:00",
+      "end": "17:00",
+      "timezone": "Asia/Jerusalem"
+    },
+    "calendarBookingUrl": null
+  },
+  "values": [
+    "Open source",
+    "Async-first communication",
+    "Documentation-driven development",
+    "Automation over manual processes",
+    "Transparency and directness",
+    "Continuous learning",
+    "Impact-oriented work"
+  ],
+  "skills": {
+    "primary": [
+      "AI Development",
+      "AI-Assisted Development",
+      "AI Agent Orchestration",
+      "Generative AI",
+      "Workflow Automation",
+      "RAG Systems",
+      "Prompt Engineering",
+      "Technical Writing"
+    ],
+    "secondary": [
+      "Linux Systems",
+      "Python",
+      "Cloud & Docker",
+      "Documentation Systems",
+      "Process Optimization"
+    ],
+    "tools": {
+      "aiMl": ["Claude Code", "Anthropic API", "OpenAI API", "Google Gemini", "Qwen", "Hugging Face", "LangChain", "LlamaIndex"],
+      "cloud": ["Google Cloud Platform", "Docker", "Kubernetes", "Vercel", "Netlify", "Serverless"],
+      "devops": ["Git", "GitHub", "GitHub Actions", "CI/CD", "Linux", "Python", "Bash", "REST APIs", "FastAPI"],
+      "cms": ["Contentful", "Sanity", "Confluence", "Notion", "Astro", "Next.js"],
+      "automation": ["n8n", "Zapier", "Make", "MCP (Model Context Protocol)"],
+      "generativeAi": ["ComfyUI", "Flux", "LoRA Training", "Replicate", "Modal", "RunPod", "Whisper ASR", "Stable Diffusion"]
+    }
+  },
+  "experience": [
+    {
+      "role": "Independent Consultant",
+      "organization": "DSR Holdings",
+      "url": "https://dsrholdings.cloud",
+      "startDate": "2015-01-01",
+      "endDate": null,
+      "current": true,
+      "location": "Israel",
+      "type": "self_employed",
+      "summary": "Technical communications and AI consulting for businesses exploring AI technologies. Design agent orchestration systems, workflow automation solutions, and prompt engineering implementations.",
+      "tags": ["ai", "consulting", "technical_writing", "automation"]
+    },
+    {
+      "role": "Communications Manager",
+      "organization": "Sir Ronald Cohen",
+      "url": "https://sirronaldcohen.org",
+      "startDate": "2022-01-01",
+      "endDate": "2026-02-01",
+      "current": false,
+      "location": "Global",
+      "type": "full_time_then_contract",
+      "summary": "Led strategic communications for a globally recognized pioneer in impact investing. Collaborated with the IFVI team on data visualization and analysis.",
+      "tags": ["communications", "impact_investing", "data_visualization"]
+    },
+    {
+      "role": "Marketing Communications Manager",
+      "organization": "Ayyeka",
+      "url": "https://ayyeka.com",
+      "startDate": "2017-01-01",
+      "endDate": "2018-12-31",
+      "current": false,
+      "location": "Jerusalem, Israel",
+      "type": "full_time",
+      "summary": "Led marketing communications for an industrial IoT company. Authored technical white papers on low-energy communications networks.",
+      "tags": ["iot", "technical_writing", "marketing"]
+    },
+    {
+      "role": "Assistant Account Executive",
+      "organization": "Finn Partners",
+      "url": "https://www.finnpartners.com",
+      "startDate": "2015-01-01",
+      "endDate": "2016-12-31",
+      "current": false,
+      "location": "Jerusalem, Israel",
+      "type": "full_time",
+      "summary": "Supported account management for technology clients, media relations strategies, and PR campaigns.",
+      "tags": ["pr", "tech", "media_relations"]
+    },
+    {
+      "role": "Marketing Communications Manager",
+      "organization": "Vconnecta",
+      "url": "https://ecanvasser.com",
+      "startDate": "2013-01-01",
+      "endDate": "2014-12-31",
+      "current": false,
+      "location": "Cork, Ireland",
+      "type": "full_time",
+      "summary": "Managed marketing communications for political technology platform.",
+      "tags": ["political_tech", "marketing"]
+    }
+  ],
+  "education": [
+    {
+      "degree": "MA",
+      "field": "Political Journalism",
+      "institution": "City University London",
+      "location": "London, UK"
+    },
+    {
+      "degree": "BCL",
+      "field": "Law",
+      "institution": "University College Cork",
+      "location": "Cork, Ireland"
+    }
+  ],
+  "agentInstructions": {
+    "purpose": "This document is a machine-readable resume designed for AI agents performing talent search, candidate matching, and recruitment automation. It extends beyond traditional resume formats to include structured data that enables programmatic evaluation.",
+    "confidenceNotes": "Experience dates and skills are accurate. Compensation ranges are estimates and subject to negotiation. Portfolio statistics (repo counts, dataset counts) are approximate and change frequently.",
+    "updateFrequency": "monthly",
+    "humanVerification": "Contact the candidate via email before making commitments, scheduling interviews, or sharing personal information with third parties."
+  }
+}

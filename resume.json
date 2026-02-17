@@ -1,0 +1,167 @@
+{
+  "name": "Daniel Rosehill",
+  "title": "Automation Specialist & Technical Communications Professional",
+  "website": "https://danielrosehill.com",
+  "email": "public@danielrosehill.com",
+  "linkedin": "https://www.linkedin.com/in/danielrosehill/",
+  "location": "Jerusalem, Israel",
+  "timezone": {
+    "iana": "Asia/Jerusalem",
+    "standard": { "abbreviation": "IST", "utcOffset": "+02:00" },
+    "daylight": { "abbreviation": "IDT", "utcOffset": "+03:00", "start": "2026-03-27", "end": "2026-10-25" }
+  },
+  "summary": "Automation specialist and technical communications professional with over a decade of experience bridging AI systems, workflow orchestration, and strategic business communications. Expert in developing and implementing multi-agent systems, workflow automation solutions, and RAG architectures for complex technical environments. Specialized in translating advanced AI concepts into actionable business solutions while maintaining comprehensive documentation and knowledge management systems. Proven track record in agent orchestration, technical writing, and delivering scalable automation solutions across cybersecurity, cloud computing, and emerging technologies.",
+  "coreSkills": [
+    "AI Agent Orchestration",
+    "Workflow Automation",
+    "RAG Systems",
+    "Prompt Engineering",
+    "Technical Writing",
+    "Linux Systems",
+    "Python",
+    "Cloud & Docker",
+    "Documentation Systems",
+    "Process Optimization"
+  ],
+  "technicalSkills": {
+    "aiMlPlatforms": [
+      "Claude Code",
+      "Anthropic Claude API",
+      "OpenAI API/ChatGPT",
+      "Google Gemini",
+      "Qwen",
+      "Hugging Face",
+      "LangChain",
+      "LlamaIndex"
+    ],
+    "cloudInfrastructure": [
+      "Google Cloud Platform",
+      "Docker",
+      "Kubernetes",
+      "Vercel",
+      "Netlify",
+      "Serverless Architecture"
+    ],
+    "developmentDevOps": [
+      "Git/GitHub",
+      "GitHub Actions",
+      "CI/CD Pipelines",
+      "Linux",
+      "Python",
+      "Bash/Shell Scripting",
+      "API Development",
+      "REST APIs"
+    ],
+    "contentManagementDocumentation": [
+      "Contentful",
+      "Sanity",
+      "Confluence",
+      "Notion",
+      "Astro",
+      "Next.js",
+      "Static Site Generators"
+    ],
+    "automationWorkflowTools": [
+      "n8n",
+      "Zapier",
+      "Make",
+      "Process Automation",
+      "Workflow Orchestration"
+    ]
+  },
+  "experience": [
+    {
+      "company": "DSR Holdings",
+      "companyUrl": "https://dsrholdings.cloud",
+      "title": "Independent Consultant",
+      "period": "2015-PRESENT",
+      "location": "Israel",
+      "responsibilities": [
+        "Develop comprehensive technical communications for businesses exploring AI technologies",
+        "Design and document agent orchestration systems and workflow automation solutions",
+        "Implement prompt engineering solutions to enhance AI tools and workflows",
+        "Provide expert consulting services across diverse industries including cybersecurity, threat intelligence, cloud computing, and IoT",
+        "Develop comprehensive marketing communications collateral",
+        "Drive content strategy and implementation for multiple clients"
+      ]
+    },
+    {
+      "company": "Sir Ronald Cohen",
+      "companyUrl": "https://sirronaldcohen.org",
+      "title": "Communications Manager",
+      "period": "2022-Feb 2025 (Full Time) | Feb 2025 - Feb 2026 (Contract)",
+      "location": "Global",
+      "responsibilities": [
+        "Led strategic communications for a globally recognized pioneer in impact investing",
+        "Collaborated with the International Foundation for Valuing Impacts (IFVI) team on data visualization and analysis",
+        "Developed and implemented comprehensive communication strategies",
+        "Created compelling content for various platforms and audiences",
+        "Managed stakeholder relationships and media engagement"
+      ]
+    },
+    {
+      "company": "Ayyeka",
+      "companyUrl": "https://ayyeka.com",
+      "title": "Marketing Communications Manager",
+      "period": "2017-2018",
+      "location": "Jerusalem, Israel",
+      "responsibilities": [
+        "Led marketing communications for an industrial IoT (IIoT) company",
+        "Authored technical white papers on low-energy communications networks",
+        "Managed and maintained company's Confluence knowledge base",
+        "Developed product marketing materials and technical content",
+        "Coordinated marketing campaigns and content strategy"
+      ]
+    },
+    {
+      "company": "Finn Partners",
+      "companyUrl": "https://www.finnpartners.com",
+      "title": "Assistant Account Executive",
+      "period": "2015-2016",
+      "location": "Jerusalem, Israel",
+      "responsibilities": [
+        "Supported account management for technology clients",
+        "Developed media relations strategies",
+        "Created content for PR campaigns",
+        "Assisted with client communications and reporting"
+      ]
+    },
+    {
+      "company": "Vconnecta",
+      "companyUrl": "https://ecanvasser.com",
+      "title": "Marketing Communications Manager",
+      "period": "2013-2014",
+      "location": "Cork, Ireland",
+      "responsibilities": [
+        "Managed marketing communications for political technology platform",
+        "Developed content strategy and marketing materials",
+        "Coordinated digital marketing initiatives",
+        "Engaged with political campaigns and organizations"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "MA, Political Journalism",
+      "institution": "City University London",
+      "location": "London, UK",
+      "highlights": [
+        "Focused on political reporting and analysis",
+        "Developed expertise in journalism ethics and practices",
+        "Completed practical assignments in political coverage",
+        "Gained hands-on experience in digital journalism"
+      ]
+    },
+    {
+      "degree": "BCL, Law",
+      "institution": "University College Cork",
+      "location": "Cork, Ireland",
+      "highlights": [
+        "Comprehensive study of legal principles and practices",
+        "Developed strong analytical and research skills",
+        "Focus on technology law and regulations",
+        "Built foundation in legal writing and analysis"
+      ]
+    }
+  ]
+}
